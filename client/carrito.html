@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito – Mielissimo</title>
+  <link rel="stylesheet" href="css/styles.css">
+ <link rel="stylesheet" href="css/tienda.css">
+<link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VGV3T51GMJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGV3T51GMJ');
+</script>
+
+</head>
+<body>
+
+  <!-- 🧁 Header -->
+ <header class="header-publico">
+  <div class="logo">
+    <img src="assets/logoCanva.png" alt="Logo de Mielissimo" />
+  </div>
+  <nav class="nav-publico">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="carrito.html">🛒 Carrito <span id="contador-carrito">(0)</span></a></li>
+        <li id="btn-favoritos" style="display: none;"><a href="favoritos.html">❤️ Favoritos</a></li>
+        <li id="login-li"><a href="login.html">Iniciar sesión</a></li>
+        <li id="btn-historial" style="display: none;"><a href="historial.html">🧾 Historial</a></li>
+        <li id="usuario-logueado" style="display: none; text-align: center;"></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+
+  <!-- 🛒 Carrito -->
+  <main>
+    <h1>Tu Carrito</h1>
+    <section class="carrito-contenedor">
+      <!-- Aquí se mostrarán los productos -->
+    </section>
+
+   <div id="opciones-envio" style="margin: 1rem 0; text-align:center;">
+  <h3>¿Cómo querés recibir tu pedido?</h3>
+  <label>
+    <input type="radio" name="tipo-envio" value="retiro" checked onchange="toggleZonaEnvio()"> Retiro en local
+  </label>
+  <br>
+  <label>
+    <input type="radio" name="tipo-envio" value="envio" onchange="toggleZonaEnvio()"> Envío a domicilio
+  </label>
+
+  <!-- Selector de zonas -->
+  <div id="zona-envio-container" style="margin-top: 1rem; display:none;">
+    <label for="zona-envio"><strong>Seleccioná tu zona:</strong></label>
+    <select id="zona-envio" onchange="calcularTotal()" style="margin-top:0.5rem; padding:0.5rem;">
+      <option value="" disabled selected>Elegí una zona</option>
+      <option value="Zona centro" data-precio="1500">Zona centro - $1500</option>
+      <option value="Jds" data-precio="2000">Jds - $2000</option>
+      <option value="Ribera" data-precio="2000">Ribera - $2000</option>
+      <option value="Barrio unión" data-precio="2500">Barrio unión - $2500</option>
+    </select>
+  </div>
+</div>
+
+
+<h3 class="total-compra">Total a pagar: <span id="total-compra" style="color: green;">ARS $0.00</span></h3>
+
+
+
+    <!-- 🔘 Botón para confirmar la compra -->
+<div style="text-align: center; margin-top: 2rem;">
+  <button id="confirmar-compra">Confirmar compra</button>
+ <p id="mensaje-compra" style="margin-top: 10px;"></p>
+
+</div>
+
+  </main>
+
+  <!-- 📞 Footer -->
+  <footer>
+  <p>© 2025 Mielissimo – Villa Mercedes</p>
+  <p>
+    WhatsApp: <a href="https://wa.me/5492657603387" target="_blank">2657-603387</a> |
+    Instagram: <a href="https://www.instagram.com/mielissimo__/" target="_blank">@mielissimo_</a>
+  </p>
+  <p style="font-size: 0.9em;">
+    Todos los derechos reservados. Sitio desarrollado por Marco Barzola.
+  </p>
+</footer>
+
+  <script type="module" src="js/carrito.js"></script>
+
+</body>
+</html>

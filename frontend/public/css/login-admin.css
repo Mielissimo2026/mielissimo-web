@@ -1,0 +1,106 @@
+body {
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fff0f5;
+  /* Brand BG */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.header-login-admin {
+  background-color: #ef5579;
+  /* Brand Primary */
+  padding: 1.5rem;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 4px 10px rgba(239, 85, 121, 0.2);
+}
+
+.header-login-admin .logo img {
+  max-height: 60px;
+}
+
+/* Centered Container */
+main.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Login Card */
+.card-login-admin {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(239, 85, 121, 0.15);
+  /* Soft pink shadow */
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #ffc2d1;
+}
+
+.card-login-admin h1 {
+  font-size: 2rem;
+  color: #ef5579;
+  margin-bottom: 2rem;
+  font-weight: 700;
+}
+
+.card-login-admin input {
+  width: 100%;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  background-color: #fafafa;
+}
+
+.card-login-admin input:focus {
+  outline: none;
+  border-color: #ef5579;
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(239, 85, 121, 0.1);
+}
+
+.card-login-admin button {
+  width: 100%;
+  padding: 1rem;
+  background-color: #ef5579;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+}
+
+.card-login-admin button:hover {
+  background-color: #e23e65;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(239, 85, 121, 0.4);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  font-size: 0.9rem;
+  background-color: #ef5579;
+  color: white;
+}
+
+footer a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}

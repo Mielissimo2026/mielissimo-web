@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Administración – Mielissimo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tienda.css">
+  <link rel="stylesheet" href="css/login-admin.css"> <!-- nuevo archivo con estilos -->
+<link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+  <!-- Encabezado con solo logo -->
+  <header class="header-login-admin">
+    <div class="logo">
+      <a href="index.html">
+        <img src="assets/logoCanva.png" alt="Logo de Mielissimo">
+      </a>
+    </div>
+  </header>
+
+  <!-- Formulario de acceso -->
+  <main class="form-container">
+    <div class="card-login-admin">
+      <h1>Acceso Administración</h1>
+      <form id="form-login-admin">
+        <input type="text" name="usuario" placeholder="Usuario" required />
+        <input type="password" name="clave" placeholder="Contraseña" required />
+        <button type="submit">Ingresar</button>
+      </form>
+      <p id="mensaje-login" style="color: red;"></p>
+      <p style="margin-top: 10px; text-align: center;">
+  <a href="#" id="recuperar-link">¿Olvidaste tu contraseña?</a>
+</p>
+<p id="mensaje-recuperacion" style="margin-top: 10px; text-align: center;"></p>
+
+    </div>
+  </main>
+
+  <footer>
+  <p>© 2025 Mielissimo – Villa Mercedes</p>
+  <p>
+    WhatsApp: <a href="https://wa.me/5492657603387" target="_blank">2657-603387</a> |
+    Instagram: <a href="https://www.instagram.com/mielissimo__/" target="_blank">@mielissimo_</a>
+  </p>
+  <p style="font-size: 0.9em;">
+    Todos los derechos reservados. Sitio desarrollado por Marco Barzola.
+  </p>
+</footer>
+
+  <script src="js/login-admin.js"></script>
+
+  <script>
+document.getElementById("recuperar-link").addEventListener("click", async (e) => {
+  e.preventDefault();
+
+  const res = await fetch("https://mielissimo.onrender.com/api/admin/recuperar", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({}) // correo fijo se maneja en backend
+  });
+
+  const data = await res.json();
+  const mensajeRecuperacion = document.getElementById("mensaje-recuperacion");
+mensajeRecuperacion.innerText = data.mensaje || data.error;
+
+if (res.ok) {
+  mensajeRecuperacion.style.color = "green";
+} else {
+  mensajeRecuperacion.style.color = "red";
+}
+
+});
+</script>
+
+</body>
+</html>

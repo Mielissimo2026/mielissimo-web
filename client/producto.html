@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Detalle del producto | Mielissimo</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/tienda.css" />
+ <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+  <style>
+    .producto-detalle-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      justify-content: center;
+    }
+
+    .producto-imagen {
+      max-width: 350px;
+      border-radius: 1rem;
+    }
+
+    .producto-info {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .variantes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .variante-card {
+      border: 1px solid #eee;
+      padding: 1rem;
+      border-radius: 1rem;
+      background: #fff;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .variante-card p {
+      margin: 0.5rem 0;
+    }
+
+    .botones-producto {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    #btn-favorito {
+      font-size: 1.8rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VGV3T51GMJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-VGV3T51GMJ');
+</script>
+
+</head>
+<body>
+  <header class="header-publico">
+  <div class="logo">
+    <img src="assets/logoCanva.png" alt="Logo de Mielissimo" />
+  </div>
+  <nav class="nav-publico">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="carrito.html">🛒 Carrito <span id="contador-carrito">(0)</span></a></li>
+        <li id="btn-favoritos" style="display: none;"><a href="favoritos.html">❤️ Favoritos</a></li>
+        <li id="login-li"><a href="login.html">Iniciar sesión</a></li>
+        <li id="btn-historial" style="display: none;"><a href="historial.html">🧾 Historial</a></li>
+        <li id="usuario-logueado" style="display: none; text-align: center;"></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+  <main class="contenedor">
+    <section id="info-producto" class="producto-detalle-container"></section>
+    <!-- Contenedor para el mensaje -->
+  <p id="mensaje-producto" style="margin-top: 15px; font-weight: bold; text-align: center;"></p>
+    <section id="variantes-producto" class="contenedor"></section>
+
+  </main>
+
+<!-- Botón flotante del carrito -->
+<a href="carrito.html" class="boton-carrito-flotante" id="boton-carrito-flotante">
+  🛒 <span id="contador-carrito-flotante">(0)</span>
+</a>
+
+
+  <footer>
+  <p>© 2025 Mielissimo – Villa Mercedes</p>
+  <p>
+    WhatsApp: <a href="https://wa.me/5492657603387" target="_blank">2657-603387</a> |
+    Instagram: <a href="https://www.instagram.com/mielissimo__/" target="_blank">@mielissimo_</a>
+  </p>
+  <p style="font-size: 0.9em;">
+    Todos los derechos reservados. Sitio desarrollado por Marco Barzola.
+  </p>
+</footer>
+
+  <script type="module" src="js/producto.js"></script>
+
+ <script type="module">
+  import { mostrarUsuario, actualizarContadorCarrito, crearBotonCarritoFlotante } from "./js/navbar.js";
+  mostrarUsuario();
+  actualizarContadorCarrito();
+  crearBotonCarritoFlotante();
+</script>
+
+</body>
+</html>

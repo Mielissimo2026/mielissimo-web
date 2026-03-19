@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panel de Administración - Mielissimo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+
+<body>
+
+  <div class="admin-layout">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo-area">
+          <img src="assets/logoCanva.png" alt="Mielissimo" />
+          <h2>Admin</h2>
+        </div>
+        
+        <div class="mobile-controls">
+          <button id="logout-mobile" class="icon-btn" title="Cerrar Sesión">
+            <i class="fa-solid fa-sign-out-alt"></i>
+          </button>
+          <button id="menu-toggle" class="icon-btn">
+            <i class="fa-solid fa-bars"></i>
+          </button>
+        </div>
+      </div>
+
+      <nav id="sidebar-nav">
+        <button class="nav-btn active" data-section="section-productos">
+          <i class="fa-solid fa-jar"></i> Productos
+        </button>
+        <button class="nav-btn" data-section="section-categorias">
+          <i class="fa-solid fa-tags"></i> Categorías
+        </button>
+        <button class="nav-btn" data-section="section-pedidos">
+          <i class="fa-solid fa-receipt"></i> Pedidos (Historial)
+        </button>
+      </nav>
+
+      <div class="sidebar-footer desktop-only">
+        <button id="logout" class="logout-btn">
+          <i class="fa-solid fa-sign-out-alt"></i> Cerrar Sesión
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="content-area">
+
+      <!-- Store Status Header -->
+      <header class="top-bar">
+        <div class="status-indicator">
+          Estado del Local: <strong id="estado-local-texto">Cargando...</strong>
+          <button id="btn-toggle-estado" class="btn-sm">Cambiar</button>
+        </div>
+      </header>
+
+      <!-- SECTION: PRODUCTOS -->
+      <section id="section-productos" class="dashboard-section active">
+        <div class="section-header">
+          <h2>Gestión de Productos</h2>
+        </div>
+
+        <div class="panel-card">
+          <h3>Agregar / Editar Producto</h3>
+          <form id="formulario-producto">
+            <input type="hidden" id="producto-id" />
+            <div class="form-row">
+              <input type="text" id="prod-nombre" name="nombre" placeholder="Nombre del producto" required />
+              <input type="number" id="prod-precio" name="precio" step="0.01" placeholder="Precio ($)" required />
+            </div>
+
+            <div class="form-row">
+              <div style="flex:1;">
+                <label>Precio Oferta (Opcional)</label>
+                <input type="number" name="precio_oferta" step="0.01" placeholder="$ Oferta" />
+              </div>
+              <div style="flex:0 0 auto; display:flex; gap: 15px; align-items:center; flex-wrap: wrap;">
+                <label style="cursor:pointer; display:flex; align-items:center; gap:5px;">
+                  <input type="checkbox" name="es_oferta" /> En Oferta
+                </label>
+                <label style="cursor:pointer; display:flex; align-items:center; gap:5px;">
+                  <input type="checkbox" name="es_nuevo" /> Es Nuevo
+                </label>
+                <label style="cursor:pointer; display:flex; align-items:center; gap:5px;">
+                </label>
+              </div>
+            </div>
+
+            <div class="categories-selector">
+              <p>Categorías:</p>
+              <div id="categorias-container" class="checkbox-grid">
+                <!-- Checkboxes injected by JS -->
+              </div>
+            </div>
+
+            <input type="file" id="prod-imagen" name="imagen" accept="image/*" />
+            <img id="preview-imagen" src="" alt="Vista previa"
+              style="max-height: 100px; display: none; object-fit: cover; border-radius: 8px;" />
+
+            <div class="form-actions">
+              <button type="submit" id="btn-guardar-producto">Guardar Producto</button>
+              <button type="button" id="cancelar-edicion-producto" style="display: none; background:#999;">Cancelar
+                Edición</button>
+            </div>
+          </form>
+        </div>
+
+        <div id="seccionVariantes" class="panel-card"
+          style="display: none; margin-top: 20px; border-left: 5px solid orange;">
+          
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 15px;">
+            <h3 style="margin:0;">Variantes del producto: <span id="nombre-producto-variante"></span></h3>
+            <button type="button" id="btnCerrarVariantes" class="btn-del" style="padding:5px 15px; background-color: #666;">X Cerrar</button>
+          </div>
+          <form id="formulario-variante" style="flex-direction: row; align-items: flex-end; gap: 10px;">
+            <div>
+              <label>Tipo (ej. Tamaño, Sabor)</label>
+              <select name="tipo" required style="padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px;">
+                <option value="Sabor">Sabor</option>
+                <option value="Tamaño">Tamaño</option>
+                <option value="Color">Color</option>
+                <option value="Otro">Otro</option>
+              </select>
+            </div>
+            <div>
+              <label>Nombre (ej. 1kg, Frutilla)</label>
+              <input type="text" name="nombre" placeholder="Ej. Grande" required />
+            </div>
+            <div>
+              <label>Precio Extra ($)</label>
+              <input type="number" name="precio_extra" placeholder="0" />
+            </div>
+            <button type="submit" id="btnAgregarVariante">Agregar Variante</button>
+            <button type="button" id="btnCancelarEdicionVariante"
+              style="display:none; background:#999;">Cancelar</button>
+          </form>
+          <p id="mensaje-variante"></p>
+
+          <table id="tabla-variantes" class="styled-table">
+            <thead>
+              <tr>
+                <th>Tipo</th>
+                <th>Nombre</th>
+                <th>Precio Extra</th>
+                <th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              </tbody>
+          </table>
+        </div>
+
+        <div class="panel-card mt-4">
+          <h3>Lista de Productos</h3>
+          <div class="search-controls"
+            style="display: grid; grid-template-columns: 1fr 250px; gap: 15px; margin-bottom: 20px;">
+            <input type="text" id="buscador-productos" placeholder="Buscar producto..."
+              style="padding: 10px; border-radius: 8px; border: 1px solid #ddd;" />
+            <select id="filtro-categoria-productos" style="padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+              <option value="">Todas las categorías</option>
+              <!-- Categories loaded via JS -->
+            </select>
+          </div>
+          <div id="lista-productos" class="productos-grid">
+            <!-- Products Grid Loaded via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CATEGORIAS -->
+      <section id="section-categorias" class="dashboard-section">
+        <div class="section-header">
+          <h2>Gestión de Categorías</h2>
+        </div>
+        <div class="panel-card">
+          <form id="formulario-categoria" style="max-width: 500px;">
+            <div class="form-row">
+              <input type="text" name="nombre" placeholder="Nueva Categoría" required />
+              <button type="submit">Agregar</button>
+            </div>
+          </form>
+          <p id="mensaje-categoria"></p>
+
+          <div id="lista-categorias"
+            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin-top: 20px;">
+            <!-- Categories Loaded via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: PEDIDOS -->
+      <section id="section-pedidos" class="dashboard-section">
+        <div class="section-header">
+          <h2>Historial de Pedidos</h2>
+        </div>
+        <div class="panel-card">
+          <div class="search-box" style="display: flex; gap: 10px; margin-bottom: 20px;">
+            <input type="text" id="buscar-compra-id" placeholder="Buscar por ID de Pedido" />
+            <button id="btn-buscar-compra">Buscar</button>
+          </div>
+          <div id="resultado-busqueda" class="mt-4"></div>
+        </div>
+      </section>
+
+      <footer style="text-align: center; padding: 30px 0; color: #888; font-size: 0.9rem; margin-top: auto;">
+        Desarrollado por <strong>Marco Barzola</strong>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="js/admin.js"></script>
+</body>
+
+</html>

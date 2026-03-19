@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nombre": "Gomitas Mogul",
+    "precio": 1200,
+    "imagen": "assets/productos/Gomitas.jpeg"
+  },
+  {
+    "id": 2,
+    "nombre": "Jelly Beans",
+    "precio": 1500,
+    "imagen": "assets/productos/JellyBeans.jpeg"
+  },
+  {
+    "id": 3,
+    "nombre": "Chocolate Arcor",
+    "precio": 1000,
+    "imagen": "assets/productos/chocolate.jpeg"
+  },
+  {
+    "id": 4,
+    "nombre": "Dientitos Mogul",
+    "precio": 1300,
+    "imagen": "assets/productos/Dientitos.jpeg"
+  },
+  {
+    "id": 5,
+    "nombre": "Alfajor artesanal",
+    "precio": 500,
+    "imagen": "assets/productos/ejemplo.jpg"
+  }
+]

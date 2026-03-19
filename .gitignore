@@ -1,0 +1,53 @@
+# General
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Sistema operativo
+*.swp
+*.swo
+
+# Entornos
+.env
+.env.*
+
+# Producción / builds
+dist/
+build/
+
+# Netlify
+.netlify/
+netlify.toml
+
+# IDEs
+.vscode/
+.idea/
+
+# Base de datos local
+*.sqlite
+*.db
+*.sql
+
+# Coverage reports
+coverage/
+
+# Archivos temporales o de sistema
+*.tmp
+*.temp
+
+# Git
+.git/
+
+# Archivos de lock (opcional si usás solo uno)
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

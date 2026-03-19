@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Iniciar sesión – Mielissimo</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tienda.css">
+  <link rel="stylesheet" href="css/login.css"> <!-- este contiene los estilos de la tarjeta -->
+<link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+
+  <header class="header-publico">
+  <div class="logo">
+    <img src="assets/logoCanva.png" alt="Logo de Mielissimo" />
+  </div>
+  <nav class="nav-publico">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
+
+    <div class="nav-links" id="nav-links">
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="carrito.html">🛒 Carrito <span id="contador-carrito">(0)</span></a></li>
+        <li id="btn-favoritos" style="display: none;"><a href="favoritos.html">❤️ Favoritos</a></li>
+        <li id="login-li"><a href="login.html">Iniciar sesión</a></li>
+        <li id="btn-historial" style="display: none;"><a href="historial.html">🧾 Historial</a></li>
+        <li id="usuario-logueado" style="display: none; text-align: center;"></li>
+      </ul>
+    </div>
+  </nav>
+</header>
+
+  <!-- 🧾 Formulario dentro de tarjeta -->
+  <main class="form-container">
+    <div class="card-login">
+      <h1>Iniciar sesión</h1>
+      <form id="loginForm">
+        <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" id="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+        <p id="mensaje-login" class="mensaje-login"></p>
+
+      </form>
+      <p>¿No tenés cuenta? <a href="registro.html">Registrate acá</a></p>
+      <p><a href="forgot-password.html">¿Olvidaste tu contraseña?</a></p>
+    </div>
+  </main>
+
+  <footer>
+  <p>© 2025 Mielissimo – Villa Mercedes</p>
+  <p>
+    WhatsApp: <a href="https://wa.me/5492657603387" target="_blank">2657-603387</a> |
+    Instagram: <a href="https://www.instagram.com/mielissimo__/" target="_blank">@mielissimo_</a>
+  </p>
+  <p style="font-size: 0.9em;">
+    Todos los derechos reservados. Sitio desarrollado por Marco Barzola.
+  </p>
+</footer>
+
+  <script src="js/login.js"></script>
+
+  <script type="module">
+  import { mostrarUsuario, actualizarContadorCarrito, crearBotonCarritoFlotante } from "./js/navbar.js";
+  mostrarUsuario();
+  actualizarContadorCarrito();
+  crearBotonCarritoFlotante();
+</script>
+
+</body>
+</html>

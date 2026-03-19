@@ -1,0 +1,103 @@
+body {
+  background-color: white;
+  font-family: "Segoe UI", sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Centrado del contenido */
+main.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+/* Tarjeta del formulario */
+.card-registro {
+  background: #ffe5ef;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card-registro h1 {
+  font-size: 2rem;
+  color: #ef5579;
+  margin-bottom: 2rem;
+}
+
+.card-registro label {
+  display: block;
+  text-align: left;
+  margin: 0.8rem 0 0.4rem;
+  color: #333;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.card-registro input {
+  width: 100%;
+  padding: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-registro input:focus {
+  border-color: #ef5579;
+  box-shadow: 0 0 5px rgba(239, 85, 121, 0.4);
+  outline: none;
+}
+
+.card-registro button {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 2rem;
+  background-color: #ef5579;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.card-registro button:hover {
+  background-color: #e0466c;
+  transform: scale(1.01);
+}
+
+.card-registro p {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.card-registro a {
+  color: #ef5579;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.card-registro a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.85rem;
+  background-color: #ef5579;
+  color: white;
+}
+

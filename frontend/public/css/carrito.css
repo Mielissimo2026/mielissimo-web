@@ -1,0 +1,86 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+h1 {
+  text-align: center;
+  color: #ef5579;
+}
+
+#carrito-contenedor {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.item-carrito {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid #ef55795e;
+  padding: 1rem;
+  border-radius: 12px;
+  background-color: #fff0f5;
+}
+
+.item-carrito img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.item-carrito .info {
+  flex: 1;
+}
+
+.item-carrito h3 {
+  margin: 0;
+  color: #ef5579;
+}
+
+.item-carrito p {
+  margin: 0.3rem 0;
+}
+
+.btn-eliminar {
+  background-color: #ef5579;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.total-carrito {
+  text-align: right;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  color: #333;
+}
+
+#confirmar-compra {
+  display: block;
+  margin: 1.5rem auto;
+  background-color: #ef5579;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#confirmar-compra:hover {
+  background-color: #d6456a;
+}
