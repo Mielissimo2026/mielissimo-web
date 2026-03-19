@@ -13,7 +13,10 @@ const cloudinary = require('./config/cloudinary');
 require('dotenv').config();
 
 const app = express();
-const PORT = 3000;
+app.use(cors({
+  origin: ['https://cool-cuchufli-d1e6ca.netlify.app', 'http://localhost:5173'],
+  credentials: true
+}));
 const JWT_SECRET = "claveultrasecreta123";
 const mailchimp = require("@mailchimp/mailchimp_marketing");
 
