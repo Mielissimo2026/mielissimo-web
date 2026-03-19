@@ -13,6 +13,7 @@ const cloudinary = require('./config/cloudinary');
 require('dotenv').config();
 
 const app = express();
+const PORT = process.env.PORT || 3000;
 app.use(cors({
   origin: ['https://cool-cuchufli-d1e6ca.netlify.app', 'http://localhost:5173'],
   credentials: true
