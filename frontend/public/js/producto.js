@@ -26,7 +26,7 @@ let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
 
 async function cargarProducto() {
   try {
-    const res = await fetch(`https://api.mielissimo.com.ar/api/productos/${id}`);
+    const res = await fetch(`https://mielissimo-web.onrender.com/api/productos/${id}`);
     const prod = await res.json();
 
     if (!prod) {
@@ -74,7 +74,7 @@ actualizarContadorProducto(prod.id);
 
 async function verificarFavorito() {
   try {
-    const res = await fetch("https://api.mielissimo.com.ar/api/favoritos", {
+    const res = await fetch("https://mielissimo-web.onrender.com/api/favoritos", {
       headers: { Authorization: `Bearer ${token}` }
     });
 
@@ -93,13 +93,13 @@ async function toggleFavorito() {
   try {
     const btn = document.getElementById("btn-favorito");
     if (esFavorito) {
-      await fetch(`https://api.mielissimo.com.ar/api/favoritos/${id}`, {
+      await fetch(`https://mielissimo-web.onrender.com/api/favoritos/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` }
       });
       esFavorito = false;
     } else {
-      await fetch("https://api.mielissimo.com.ar/api/favoritos", {
+      await fetch("https://mielissimo-web.onrender.com/api/favoritos", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -180,7 +180,7 @@ function agregarAlCarrito(prod) {
 
 
 function cargarVariantesVisuales() {
-  fetch(`https://api.mielissimo.com.ar/api/variantes/${id}`)
+  fetch(`https://mielissimo-web.onrender.com/api/variantes/${id}`)
     .then(res => res.json())
     .then(variantes => {
       if (variantes.length === 0) return;

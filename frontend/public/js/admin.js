@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://mielissimo-web.onrender.com";
+
 // === VERIFICACIÓN SEGURA DE TOKEN ===
 let tokenAdmin = null;
 try {
@@ -133,7 +135,7 @@ let productoEnEdicion = null;
 
 async function cargarProductos() {
     try {
-        const res = await fetch("/api/productos?mostrarInactivos=true", {
+        const res = await fetch("${API_BASE_URL}/api/productos?mostrarInactivos=true", {
             headers: { "Authorization": `Bearer ${tokenAdmin}` }
         });
         if (!res.ok) throw new Error("Error fetching productos");
@@ -220,7 +222,7 @@ async function guardarProducto(e) {
 
     const id = document.getElementById("producto-id").value;
     const method = id ? "PUT" : "POST";
-    const url = id ? `/api/productos/${id}` : "/api/productos";
+    const url = id ? `${API_BASE_URL}/api/productos/${id}` : `${API_BASE_URL}/api/productos`;
 
     try {
         const res = await fetch(url, {
@@ -313,7 +315,7 @@ window.eliminarProducto = async function (id, activoActual) {
     if (!confirm(activoActual ? "¿Pausar producto?" : "¿Reactivar producto?")) return;
     const endpoint = activoActual ? 'desactivar' : 'activar';
     try {
-        await fetch(`/api/productos/${endpoint}/${id}`, {
+        await fetch(`${API_BASE_URL}/api/productos/${endpoint}/${id}`, {
             method: "PUT", headers: { "Authorization": `Bearer ${tokenAdmin}` }
         });
         cargarProductos();
@@ -325,7 +327,7 @@ window.eliminarProducto = async function (id, activoActual) {
 // =========================================================
 async function cargarCategorias() {
     try {
-        const res = await fetch("/api/categorias", { headers: { "Authorization": `Bearer ${tokenAdmin}` } });
+        const res = await fetch("${API_BASE_URL}/api/categorias", { headers: { "Authorization": `Bearer ${tokenAdmin}` } });
         const cats = await res.json();
 
         // Renderizar lista para eliminar
@@ -373,7 +375,7 @@ async function agregarCategoria(e) {
     if (!input) return;
     const nombre = input.value;
 
-    await fetch("/api/categorias", {
+    await fetch("${API_BASE_URL}/api/categorias", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${tokenAdmin}` },
         body: JSON.stringify({ nombre })
@@ -395,7 +397,7 @@ window.editarCategoria = async function (id, nombreActual) {
 
     if (nuevoNombre && nuevoNombre !== nombreActual) {
         try {
-            const res = await fetch(`/api/categorias/${id}`, {
+            const res = await fetch(`${API_BASE_URL}/api/categorias/${id}`, {
                 method: "PUT",
                 headers: { "Content-Type": "application/json", "Authorization": `Bearer ${tokenAdmin}` },
                 body: JSON.stringify({ nombre: nuevoNombre })
@@ -431,7 +433,7 @@ window.eliminarCategoria = async function (id) {
     }
 
     try {
-        const res = await fetch(`/api/categorias/${id}`, { method: "DELETE", headers: { "Authorization": `Bearer ${tokenAdmin}` } });
+        const res = await fetch(`${API_BASE_URL}/api/categorias/${id}`, { method: "DELETE", headers: { "Authorization": `Bearer ${tokenAdmin}` } });
         const data = await res.json();
 
         if (!res.ok) {
@@ -462,7 +464,7 @@ window.editarVariantes = function (id, nombre) {
 };
 
 async function cargarVariantes(id) {
-    const res = await fetch(`/api/variantes/${id}`, { headers: { "Authorization": `Bearer ${tokenAdmin}` } });
+    const res = await fetch(`${API_BASE_URL}/api/variantes/${id}`, { headers: { "Authorization": `Bearer ${tokenAdmin}` } });
     const variantes = await res.json();
     const tbody = document.querySelector("#tabla-variantes tbody");
     if (tbody) {
@@ -481,7 +483,7 @@ async function agregarVariante(e) {
     e.preventDefault();
     const data = Object.fromEntries(new FormData(e.target));
     data.id_producto = prodVarianteId;
-    await fetch("/api/variantes", {
+    await fetch("${API_BASE_URL}/api/variantes", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${tokenAdmin}` },
         body: JSON.stringify(data)
@@ -492,7 +494,7 @@ async function agregarVariante(e) {
 
 window.eliminarVariante = async function (id) {
     if (!confirm("¿Borrar variante?")) return;
-    await fetch(`/api/variantes/${id}`, { method: "DELETE", headers: { "Authorization": `Bearer ${tokenAdmin}` } });
+    await fetch(`${API_BASE_URL}/api/variantes/${id}`, { method: "DELETE", headers: { "Authorization": `Bearer ${tokenAdmin}` } });
     cargarVariantes(prodVarianteId);
 };
 
@@ -501,7 +503,7 @@ window.eliminarVariante = async function (id) {
 // =========================================================
 async function cargarEstadoLocal() {
     try {
-        const res = await fetch("/api/configuracion");
+        const res = await fetch("${API_BASE_URL}/api/configuracion");
         if (!res.ok) return;
         const config = await res.json();
 
@@ -521,7 +523,7 @@ async function toggleEstadoLocal() {
     if (!texto) return;
 
     const nuevo = texto.textContent === "ABIERTO" ? "CERRADO" : "ABIERTO";
-    await fetch("/api/configuracion", {
+    await fetch("${API_BASE_URL}/api/configuracion", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Authorization": `Bearer ${tokenAdmin}` },
         body: JSON.stringify({ clave: "estado_local", valor: nuevo })
@@ -542,7 +544,7 @@ async function buscarPedidoPorId() {
     contenedor.innerHTML = "Buscando...";
 
     try {
-        const res = await fetch(`/api/pedidos/${id}`, { headers: { "Authorization": `Bearer ${tokenAdmin}` } });
+        const res = await fetch(`${API_BASE_URL}/api/pedidos/${id}`, { headers: { "Authorization": `Bearer ${tokenAdmin}` } });
         if (!res.ok) {
             contenedor.innerHTML = "<p style='color:red;'>Pedido no encontrado.</p>";
             return;

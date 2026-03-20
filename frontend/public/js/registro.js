@@ -30,7 +30,7 @@ if (password.length < 6) {
 
 
     try {
-      const res = await fetch("https://api.mielissimo.com.ar/api/usuarios/registro", {
+      const res = await fetch("https://mielissimo-web.onrender.com/api/usuarios/registro", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

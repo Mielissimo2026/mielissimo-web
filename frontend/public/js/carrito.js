@@ -165,7 +165,7 @@ async function confirmarCompra() {
 
   // Guardar en DB
   try {
-    const res = await fetch("https://api.mielissimo.com.ar/api/compras", {
+    const res = await fetch("https://mielissimo-web.onrender.com/api/compras", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({

@@ -1,4 +1,4 @@
-const API_URL = "https://api.mielissimo.com.ar/api";
+const API_URL = "https://mielissimo-web.onrender.com/api";
 
 function manejarTokenExpiradoUsuario(res) {
   if (res.status === 401) {
@@ -223,7 +223,7 @@ if (formNewsletter) {
     const email = inputEmail.value.trim();
 
     try {
-      const res = await fetch("https://api.mielissimo.com.ar/api/newsletter", {
+      const res = await fetch("https://mielissimo-web.onrender.com/api/newsletter", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"

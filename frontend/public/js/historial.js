@@ -22,7 +22,7 @@ async function cargarHistorial() {
   }
 
   try {
-    const res = await fetch("https://api.mielissimo.com.ar/api/historial", {
+    const res = await fetch("https://mielissimo-web.onrender.com/api/historial", {
       headers: {
         Authorization: `Bearer ${token}`
       }

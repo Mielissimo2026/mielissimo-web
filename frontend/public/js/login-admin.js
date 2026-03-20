@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://mielissimo-web.onrender.com";
+
 const formLogin = document.getElementById("form-login-admin");
 const mensaje = document.getElementById("mensaje-login");
 
@@ -6,7 +8,7 @@ formLogin.addEventListener("submit", async (e) => {
   const datos = Object.fromEntries(new FormData(formLogin));
 
   try {
-    const res = await fetch("/api/admin/login", {
+    const res = await fetch("${API_BASE_URL}/api/admin/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(datos)
